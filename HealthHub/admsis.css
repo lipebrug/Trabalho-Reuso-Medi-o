@@ -1,0 +1,212 @@
+/* ======= Variáveis ======= */
+:root{
+  --navy: #041b3b;
+  --bg: #ffffff;
+  --thead: #0a274f; /* tom escuro para o cabeçalho da tabela */
+  --row: #edf5f5;   /* fundo das linhas (suave) */
+  --row-alt: #f6faf9;
+  --border: #e4e9ef;
+  --text: #0d1b2a;
+  --muted: #637082;
+}
+
+/* ======= Reset básico ======= */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* ======= Barra superior ======= */
+.navbar{
+  height: 56px;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  padding: 0 22px;
+}
+.navbar-left { display: flex; align-items: center; }
+
+/* ======= Página ======= */
+.page{
+  max-width: 1100px;
+  margin: 28px auto 60px;
+  padding: 0 18px;
+}
+
+/* Toolbar que segura o botão e a busca */
+.toolbar{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* mantém a busca centralizada */
+  margin-bottom: 28px;
+  min-height: 44px;        /* mesma altura da caixa de busca */
+}
+
+/* Zera a margem da .search dentro da toolbar */
+.toolbar .search{ margin: 0; }
+
+/* Botão Voltar à esquerda, perto do canto */
+.btn-back{
+  position: absolute;
+  left: 0;                 /* colado à margem esquerda do container .page */
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--navy);
+  background: #ffffff;
+  font-weight: 600;
+  transition: background-color .15s ease, box-shadow .15s ease, transform .12s ease;
+}
+
+.btn-back:hover{
+  background: rgba(4, 27, 59, .06);
+  box-shadow: 0 2px 6px rgba(0,0,0,.06);
+}
+
+.btn-back:active{
+  transform: translateY(-50%) scale(.98);
+}
+
+.btn-back:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(4,27,59,.2);
+}
+
+/* Em telas bem estreitas, dá um respiro para não colidir com a busca */
+@media (max-width: 520px){
+  .btn-back{ left: 8px; }
+}
+
+
+/* ===== Search ===== */
+.search{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+.search-wrap{
+  position: relative;
+  width: min(680px, 100%);
+}
+.search-input{
+  width: 100%;
+  height: 44px;
+  padding: 0 16px 0 58px; /* espaço para o ícone */
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  outline: none;
+  background: linear-gradient(#f7fbf9, #eef5f3);
+}
+.search-input::placeholder{ color: #9fb0b4; }
+.search-icon{
+  position: absolute;
+  left: 16px; top: 50%;
+  transform: translateY(-50%);
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 2px dashed #c9d3dd;
+}
+.search-icon::after{
+  content:""; position:absolute;
+  width: 10px; height: 2px; background:#c9d3dd;
+  right:-6px; bottom:-2px; transform:rotate(45deg);
+  border-radius:2px;
+}
+/* ======= Tabela ======= */
+.table-wrap{
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.data-table{
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+.data-table thead th{
+  background: var(--navy);
+  color: #fff;
+  text-align: left;
+  font-weight: 700;
+  letter-spacing: .3px;
+  padding: 16px 18px;
+  font-size: 15px;
+}
+.data-table thead th.center{ text-align: center; }
+
+.data-table tbody td{
+  padding: 20px 18px;
+  border-bottom: 1px solid var(--border);
+  font-size: 15px;
+  color: var(--text);
+}
+.data-table tbody tr:nth-child(odd){ background: var(--row); }
+.data-table tbody tr:nth-child(even){ background: var(--row-alt); }
+
+/* Coluna de ações */
+.actions{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.icon-btn{
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;    /* tamanho do ícone */
+  cursor: pointer;
+  border-radius: 50%;            /* fundo circular no hover */
+  opacity: .92;
+
+  transition:
+    background-color .15s ease,
+    box-shadow .15s ease,
+    transform .12s ease,
+    opacity .15s ease;
+}
+
+.icon-btn:hover{
+  opacity: 1;
+  background-color: rgba(13, 27, 42, .06);   /* hover neutro */
+}
+
+.icon-btn:active{
+  transform: scale(.96);         /* clique */
+}
+
+.icon-btn:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(4, 27, 59, .22); /* acessibilidade */
+}
+
+/* Hovers específicos por tipo de ação (cores) */
+.icon-btn.edit:hover{
+  background-color: rgba(18, 225, 66, 0.12); 
+  box-shadow: 0 0 0 2px rgba(19, 241, 78, 0.12) inset;
+}
+
+.icon-btn.delete:hover{
+  background-color: rgba(220, 38, 38, .12); 
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, .12) inset;
+}
+
+/* Suas imagens permanecem assim */
+.icon-btn.delete{ background-image: url("img/icon-delete.png");
+                    background-size: 25px 20px; }
+.icon-btn.edit  { background-image: url("img/icon-edit.png"); 
+                    background-size: 32px 20px; }

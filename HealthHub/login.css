@@ -1,0 +1,111 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Barra superior */
+.navbar {
+  width: 100%;
+  background-color: #041b3b; /* Azul escuro */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 10px; /* Espaço se for adicionar o logo depois */
+}
+
+.btn-logout{
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,.55);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  background: transparent;
+  transition: background-color .15s ease, box-shadow .15s ease, transform .12s ease, border-color .15s ease;
+}
+.btn-logout:hover{
+  background: rgba(255,255,255,.12);
+  box-shadow: 0 2px 6px rgba(0,0,0,.18);
+  border-color: rgba(255,255,255,.75);
+}
+.btn-logout:active{
+  transform: scale(.98);
+}
+.btn-logout:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255,255,255,.35);
+  border-color: #fff;
+}
+
+/* Container do login */
+.login-container {
+  max-width: 400px;
+  margin: 100px auto;
+  text-align: center;
+}
+
+.login-container h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.login-container p {
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* Formulário */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-form label {
+  text-align: left;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.login-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-size: 14px;
+}
+
+.login-form button {
+  background-color: #041b3b;
+  color: white;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.login-form button:hover {
+  background-color: #0a2c60;
+}
